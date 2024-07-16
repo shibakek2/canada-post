@@ -8,9 +8,9 @@ You can install the package using pip:
 
 pip install canadapostwrapper
 
+### pypi
 
-## Usage
-
+pip install canadapostwrapper1==0.1.0
 
 ### Parameters
 
@@ -64,3 +64,4 @@ Your Name - [wilhemnorman732@gmail.com](mailto:wilhemnorman732@gmail.com)
 ## Acknowledgments
 
 - Thanks to Canada Post for providing the tracking service.
+
