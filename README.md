@@ -10,7 +10,7 @@ pip install canadapostwrapper
 
 ### pypi
 
-(https://pypi.org/project/canadapostwrapper1/0.1.0)
+https://pypi.org/project/canadapostwrapper1/0.1.0
 
 ### Parameters
 
