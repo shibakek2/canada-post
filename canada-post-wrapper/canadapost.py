@@ -1,21 +1,14 @@
 import requests
 import time
+import json
 from datetime import datetime
 
 class CanadaPostTracker:
-    def __init__(self, tracking_id, webhook_url):
+    def __init__(self, tracking_id, delay=1):
         self.tracking_id = tracking_id
         self.shipping_url = f"https://www.canadapost-postescanada.ca/track-reperage/rs/track/json/package?pins={tracking_id}"
-        self.webhook_url = webhook_url
+        self.delay = delay
         self.last_status = None
-
-    def send_to_discord(self, embed):
-        data = {
-            "embeds": [embed]
-        }
-        response = requests.post(self.webhook_url, json=data)
-        if response.status_code != 204:
-            print(f"Failed to send message to Discord: {response.status_code}, {response.text}")
 
     def check_shipping(self):
         try:
@@ -40,25 +33,23 @@ class CanadaPostTracker:
 
                 if status != self.last_status:
                     self.last_status = status
-                    embed = {
-                        "title": "Shipping Information",
-                        "fields": [
-                            {"name": "Sent From", "value": addtnl_orig_info, "inline": False},
-                            {"name": "Shipping To", "value": addtnl_dest_info, "inline": False},
-                            {"name": "Status", "value": status, "inline": False},
-                            {"name": "Expected Delivery Date", "value": formatted_delivery_date , "inline": False},
-                            {"name": "TNumber", "value": self.tracking_id , "inline": False},
-                            {"name": "stat", "value": perrmstat , "inline": False}
-                        ],
-                        "timestamp": datetime.utcnow().isoformat()
+                    return {
+                        "Sent From": addtnl_orig_info,
+                        "Shipping To": addtnl_dest_info,
+                        "Status": status,
+                        "Expected Delivery Date": formatted_delivery_date,
+                        "Tracking Number": self.tracking_id,
+                        "Status Detail": perrmstat
                     }
-                    self.send_to_discord(embed)
             else:
                 print("Check the shipping number and try again")    
         except Exception as e:
             print(f'Error: {e}')
+        return None
 
-    def start_tracking(self, interval=300):
+    def start_tracking(self):
         while True:
-            self.check_shipping()
-            time.sleep(interval)
+            shipping_info = self.check_shipping()
+            if shipping_info:
+                print(shipping_info)
+            time.sleep(self.delay * 60)
