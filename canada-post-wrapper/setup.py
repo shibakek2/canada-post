@@ -1,21 +1,18 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='canadapost-tracker',
+    name='canadapostwrapper1',
     version='0.1.0',
     packages=find_packages(),
     install_requires=[
         'requests',
     ],
-    entry_points={
-        'console_scripts': [
-            # If you want to add command-line scripts
-        ],
-    },
-    author='Your Name',
-    author_email='your.email@example.com',
-    description='A Python wrapper for tracking Canada Post shipments and sending updates to Discord.',
-    url='https://github.com/yourusername/canadapost-tracker',  # Update with your repository URL
+    author='shibakek',
+    author_email='wilhemnorman732@gmail.com',
+    description='A wrapper for tracking packages with Canada Post',
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
+    url='https://github.com/shibakek2/canada-post',
     classifiers=[
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License',
