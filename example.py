@@ -1,6 +1,6 @@
 from canadapostwrapper.canadapost import CanadaPostTracker
 
-tracker = CanadaPostTracker(tracking_id='6107031730947239')
+tracker = CanadaPostTracker(tracking_id='YOUR_TRACKING_ID')
 
 shipping_info = tracker.check_shipping()
 
