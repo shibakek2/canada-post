@@ -6,11 +6,11 @@ CanadaPostWrapper is a Python package that allows you to track packages using Ca
 
 You can install the package using pip:
 
-pip install canadapostwrapper
+pip install canadapostwrapper==0.4.0
 
 ### pypi
 
-https://pypi.org/project/canadapostwrapper1/0.1.0
+https://pypi.org/project/canadapostwrapper/0.4.0/
 
 ### Parameters
 
