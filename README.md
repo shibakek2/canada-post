@@ -1,53 +1,41 @@
-# CanadaPostWrapper
+# Canada Post Wrapper
 
-CanadaPostWrapper is a Python package that allows you to track packages using Canada Post's tracking service.
+A Python wrapper for tracking packages with Canada Post.
 
 ## Installation
 
 You can install the package using pip:
 
-pip install canadapostwrapper==0.4.0
-
-### pypi
-
-https://pypi.org/project/canadapostwrapper/0.4.0/
-
-### Parameters
-
-- `tracking_id` (str): The tracking ID of the package you want to track.
-- `delay` (int, optional): The delay in minutes between each tracking check. Default is 1 minute.
-
-### Methods
-
-#### `check_shipping()`
-
-Checks the current shipping status of the package.
-
-**Returns:**
-- A dictionary containing the shipping information if the status has changed since the last check.
-- `None` if there is no change in status or if an error occurs.
-
-#### `start_tracking()`
-
-Starts continuous tracking of the package. This method will print the shipping information to the console every `delay` minutes.
-
-## Example
-
-Initialize the tracker
-
-tracker = CanadaPostTracker(tracking_id='123456789012')
-
-## Check the shipping status once
-
-shipping_info = tracker.check_shipping()
-if shipping_info:
-    print(shipping_info)
-
-## Start continuous tracking
-
-tracker.start_tracking()    
+pip install canadapostwrapper
 
 
+## Usage
+
+Here’s an example of how to use the `CanadaPostTracker` class to track a package:
+
+
+python
+
+Replace 'YOUR_TRACKING_ID' with your actual tracking ID
+
+from canadapostwrapper.canadapost import CanadaPostTracker
+tracker = CanadaPostTracker(tracking_id='YOUR_TRACKING_ID')
+tracker.start_tracking()
+
+### Example Output
+
+The `start_tracking` method will continuously check the status of your package and print the shipping information:
+
+
+json
+{
+"Sent From": "Origin Information",
+"Shipping To": "Destination Information",
+"Status": "ITEM PICKED UP BY CARRIER",
+"Expected Delivery Date": "Friday, October 15, 2021",
+"Tracking Number": "YOUR_TRACKING_ID",
+"Status Detail": "Detailed Status Information"
+}
 
 ## License
 
@@ -55,13 +43,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contributing
 
-Contributions are welcome! Please open an issue or submit a pull request on GitHub.
+If you would like to contribute to this project, please fork the repository and submit a pull request.
 
 ## Author
 
-Your Name - [wilhemnorman732@gmail.com](mailto:wilhemnorman732@gmail.com)
+shibakek - [wilhemnorman732@gmail.com](mailto:wilhemnorman732@gmail.co)
 
 ## Acknowledgments
 
-- Thanks to Canada Post for providing the tracking service.
-
+- Thanks to the developers of the `requests` library for making HTTP requests in Python easy.
