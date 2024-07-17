@@ -8,6 +8,7 @@ You can install the package using pip:
 
 pip install canadapostwrapper
 
+pypi https://pypi.org/project/canadapostwrapper/0.4.0/
 
 ## Usage
 
