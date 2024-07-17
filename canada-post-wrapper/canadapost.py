@@ -1,14 +1,10 @@
 import requests
-import time
-import json
 from datetime import datetime
 
 class CanadaPostTracker:
-    def __init__(self, tracking_id, delay=1):
+    def __init__(self, tracking_id):
         self.tracking_id = tracking_id
         self.shipping_url = f"https://www.canadapost-postescanada.ca/track-reperage/rs/track/json/package?pins={tracking_id}"
-        self.delay = delay
-        self.last_status = None
 
     def check_shipping(self):
         try:
@@ -31,25 +27,16 @@ class CanadaPostTracker:
                 else:
                     status = status    
 
-                if status != self.last_status:
-                    self.last_status = status
-                    return {
-                        "Sent From": addtnl_orig_info,
-                        "Shipping To": addtnl_dest_info,
-                        "Status": status,
-                        "Expected Delivery Date": formatted_delivery_date,
-                        "Tracking Number": self.tracking_id,
-                        "Status Detail": perrmstat
-                    }
+                return {
+                    "Sent From": addtnl_orig_info,
+                    "Shipping To": addtnl_dest_info,
+                    "Status": status,
+                    "Expected Delivery Date": formatted_delivery_date,
+                    "Tracking Number": self.tracking_id,
+                    "Status Detail": perrmstat
+                }
             else:
                 print("Check the shipping number and try again")    
         except Exception as e:
             print(f'Error: {e}')
         return None
-
-    def start_tracking(self):
-        while True:
-            shipping_info = self.check_shipping()
-            if shipping_info:
-                print(shipping_info)
-            time.sleep(self.delay * 60)
