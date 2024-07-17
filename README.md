@@ -35,8 +35,6 @@ else:
 
 ### Example Output
 
-The `start_tracking` method will continuously check the status of your package and print the shipping information:
-
 
 json
 {
