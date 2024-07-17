@@ -20,7 +20,9 @@ python
 Replace 'YOUR_TRACKING_ID' with your actual tracking ID
 
 from canadapostwrapper.canadapost import CanadaPostTracker
+
 tracker = CanadaPostTracker(tracking_id='YOUR_TRACKING_ID')
+
 tracker.start_tracking()
 
 ### Example Output
