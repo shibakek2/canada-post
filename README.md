@@ -19,32 +19,30 @@ python
 
 Replace 'YOUR_TRACKING_ID' with your actual tracking ID
 
-from canadapostwrapper.canadapost import CanadaPostTracker
+    from canadapostwrapper.canadapost import CanadaPostTracker
 
-tracker = CanadaPostTracker(tracking_id='YOUR_TRACKING_ID')
+    tracker = CanadaPostTracker(tracking_id='YOUR_TRACKING_ID')
 
-shipping_info = tracker.check_shipping()
-
-if shipping_info:
-
-    print(shipping_info)
+    shipping_info = tracker.check_shipping()
     
-else:
-
-    print("Failed to retrieve shipping information.")
+    if shipping_info:
+        print(shipping_info)
+    else:
+        print("Failed to retrieve shipping information.")
 
 ### Example Output
 
 
 json
-{
-"Sent From": "Origin Information",
-"Shipping To": "Destination Information",
-"Status": "ITEM PICKED UP BY CARRIER",
-"Expected Delivery Date": "Friday, October 15, 2021",
-"Tracking Number": "YOUR_TRACKING_ID",
-"Status Detail": "Detailed Status Information"
-}
+    
+    {
+    "Sent From": "Origin Information",
+    "Shipping To": "Destination Information",
+    "Status": "ITEM PICKED UP BY CARRIER",
+    "Expected Delivery Date": "Friday, October 15, 2021",
+    "Tracking Number": "YOUR_TRACKING_ID",
+    "Status Detail": "Detailed Status Information"
+    }
 
 ## License
 
